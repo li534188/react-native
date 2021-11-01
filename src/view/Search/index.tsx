@@ -5,6 +5,7 @@ import {Actions} from 'react-native-router-flux';
 import TextWrapper, {AllText} from '@components/TextWrapper';
 import {useTheme} from '@hooks/use-theme';
 import SearchHistory from './SearchHistory';
+import {get} from '@utils/fetchUtils';
 const Search: React.FC<{}> = ({}) => {
   const theme = useTheme();
   const [value, onChangeText] = useState('Useless Placeholder');
@@ -20,6 +21,11 @@ const Search: React.FC<{}> = ({}) => {
           onSubmitEditing={e => {
             console.log('123');
             console.log(e);
+            console.log(value);
+            const res = get(
+              'https://facebook.github.io/react-native/movies.json',
+            );
+            console.log(res);
           }}
           prefixIcon={() => {
             return (

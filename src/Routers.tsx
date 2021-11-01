@@ -95,10 +95,10 @@ const Root = () => (
         }}
       />
       <Scene
-        key={'profileForm'}
-        path={'/edit/profile/:id/'}
+        key={'carema'}
+        path={'/carema/'}
         component={() => {
-          return <Text>666</Text>;
+          return <Search />;
         }}
       />
     </Stack>
