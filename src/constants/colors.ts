@@ -2,6 +2,7 @@ export const WHITE = '#fff';
 export const INFO = '#497afc';
 export const DANGER = '#dd2c00';
 export const BACK = '#000';
+export const DEFAULTCOLOR = '#C0A705';
 
 // Dark theme
 export const DT_PRIMARY_025 = '#ffffff';

@@ -14,41 +14,83 @@ import Carema from '@components/Carema';
 import {HEADERDATA} from './mock';
 import Main from './components/Main';
 
+export interface UpdateMarketType {
+  index: number;
+  type: string;
+}
 const Price: React.FC<{}> = () => {
   const theme = useTheme();
-  const [market, setMarket] = useState<number>(0);
+  const [market, setMarket] = useState<UpdateMarketType>({
+    index: 0,
+    type: 'bottom',
+  });
+  const [position, setPosition] = useState<number>(0);
   useEffect(() => {
     console.log('price 获取');
   }, []);
-  const setValue = useCallback((index: number) => {
+  const setValue = useCallback(({index, type}: UpdateMarketType) => {
     console.log(index);
-    setMarket(index);
+    setMarket({
+      index,
+      type,
+    });
+  }, []);
+  const setPositionWrappet = useCallback((position: number) => {
+    setPosition(position);
   }, []);
   return (
     <View style={[styles.container, {backgroundColor: theme.back}]}>
-      <PriceHeader market={market} setMarket={setValue} />
-      <Main market={market} setMarket={setValue} />
+      <PriceHeader position={position} market={market} setMarket={setValue} />
+      <Main
+        market={market}
+        setMarket={setValue}
+        setPosition={setPositionWrappet}
+      />
     </View>
   );
 };
 
 export const PriceHeader: React.FC<{
-  market: number;
-  setMarket: {(market: number): void};
-}> = ({market, setMarket}) => {
+  market: UpdateMarketType;
+  setMarket: {(market: UpdateMarketType): void};
+  position: number;
+}> = ({market, setMarket, position}) => {
   const childRef = useRef(null);
+  const scrollWidth = useRef(0);
+  const [show, setShow] = useState(false);
+
+  // useEffect(() => {
+  //   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  //   const ref = childRef.current as unknown as FlatList;
+  //   const {index, type} = market;
+  //   if (type === 'bottom') {
+  //     const itemWidth = scrollWidth.current / (HEADERDATA.length - 1);
+  //     // + itemWidth * position
+  //     const offset = itemWidth * index;
+  //     // ref.scrollToIndex({index});
+  //     console.log('gggggggggggggg');
+  //     console.log(offset);
+  //     ref.scrollToOffset({offset});
+  //   }
+  // }, [market]);
+
+  useEffect(() => {
+    const ref = childRef.current as any;
+    const itemWidth = scrollWidth.current / (HEADERDATA.length - 2);
+    // + scrollWidth.current * position * 2
+    const offset = itemWidth * (market.index + 1);
+    console.log(offset);
+    ref.scrollToOffset({offset});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [position]);
 
   useEffect(() => {
     const ref = childRef.current as unknown as FlatList;
-    ref.scrollToIndex({index: market});
+    const {index, type} = market;
+    if (type === 'bottom') {
+      ref.scrollToIndex({index});
+    }
   }, [market]);
-
-  // 相当于声明全局变量
-  const viewConfigRef = useRef({
-    waitForInteraction: true,
-    viewAreaCoveragePercentThreshold: 95,
-    minimumViewTime: 5,
-  });
 
   const gotoSearch = useCallback(() => {
     Actions.push('search');
@@ -57,7 +99,10 @@ export const PriceHeader: React.FC<{
   const gotoCarema = useCallback(() => {
     Actions.push('carema');
   }, []);
-  const [show, setShow] = useState(false);
+
+  const onLayout = (e: {nativeEvent: {layout: {width: number}}}) => {
+    scrollWidth.current = e.nativeEvent.layout.width;
+  };
   return (
     <View>
       <View>
@@ -83,19 +128,20 @@ export const PriceHeader: React.FC<{
         style={[styles.pageHeder, styles.boxShadow]}
         horizontal={true}
         ref={childRef}
-        viewabilityConfig={viewConfigRef.current}
+        onLayout={onLayout}
+        // viewabilityConfig={viewConfigRef.current}
         renderItem={({item, index}: {item: any; index: number}) => {
           return (
             <View>
               <TouchableOpacity
                 onPress={() => {
                   console.log(index);
-                  setMarket(index);
+                  setMarket({index, type: 'top'});
                 }}>
                 <TextWrapper
                   style={[
                     styles.pageHeaderItem,
-                    {color: index === market ? '#C7AA0E' : '#fff'},
+                    {color: index === market.index ? '#C7AA0E' : '#fff'},
                   ]}>
                   {item.title}
                 </TextWrapper>

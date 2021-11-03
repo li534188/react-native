@@ -18,6 +18,7 @@ import {
 import Home from './view/Home';
 import Search from './view/Search';
 import CustomTabBar, {customTabList} from './view/CustomTabBar';
+import HomePage from './view/HomePage';
 
 // import Launch from './components/Launch';
 // import Register from './components/Register';

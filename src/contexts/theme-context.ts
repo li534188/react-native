@@ -3,6 +3,7 @@ import {
   DANGER,
   WHITE,
   BACK,
+  DEFAULTCOLOR,
   DT_PRIMARY_100,
   LT_PRIMARY_100,
   LT_PRIMARY_075,
@@ -22,6 +23,7 @@ export interface Theme {
   danger: typeof DANGER;
   white: typeof WHITE;
   back: typeof BACK;
+  defaultColor: typeof DEFAULTCOLOR;
 }
 
 export interface Themes {
@@ -38,6 +40,7 @@ export const themes: Themes = {
     danger: DANGER,
     white: WHITE,
     back: BACK,
+    defaultColor: DEFAULTCOLOR,
   },
   dark: {
     primary100: DT_PRIMARY_100,
@@ -47,6 +50,7 @@ export const themes: Themes = {
     danger: DANGER,
     white: WHITE,
     back: BACK,
+    defaultColor: DEFAULTCOLOR,
   },
 };
 

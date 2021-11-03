@@ -2,7 +2,8 @@ import React from 'react';
 import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import {useTheme} from '../contexts/hooks/use-theme';
-import Price from './price';
+// import Price from './price';
+import HomePage from './HomePage';
 
 export const customTabList = [
   {
@@ -10,35 +11,35 @@ export const customTabList = [
     title: '行情',
     img: require('@img/bottom/price.png'),
     activeImg: require('@img/bottom/price-active.png'),
-    component: () => <Price />,
+    component: () => <HomePage />,
   },
   {
     key: 'community',
     title: '社区',
     img: require('@img/bottom/community.png'),
     activeImg: require('@img/bottom/community-active.png'),
-    component: () => <Price />,
+    component: () => <HomePage />,
   },
   {
     key: 'find',
     title: '发现',
     img: require('@img/bottom/find.png'),
     activeImg: require('@img/bottom/find-active.png'),
-    component: () => <Price />,
+    component: () => <HomePage />,
   },
   {
     key: 'deal',
     title: '交易',
     img: require('@img/bottom/deal.png'),
     activeImg: require('@img/bottom/deal-active.png'),
-    component: () => <Price />,
+    component: () => <HomePage />,
   },
   {
     key: 'me',
     title: '我的',
     img: require('@img/bottom/me.png'),
     activeImg: require('@img/bottom/me-active.png'),
-    component: () => <Price />,
+    component: () => <HomePage />,
   },
 ];
 const CustomTabBar: React.FC<{navigation: any}> = (props: {
