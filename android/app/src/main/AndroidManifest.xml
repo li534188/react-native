@@ -29,4 +29,9 @@
         </intent-filter>
       </activity>
     </application>
+    <application>
+        <meta-data
+          android:name="com.amap.api.v2.apikey"
+          android:value="6c9f1f61c5d19ea5a4a49ce95a3f968a" />
+    </application>
 </manifest>

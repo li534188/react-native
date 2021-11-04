@@ -8,7 +8,8 @@ import {
   Modal,
 } from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import Me from './components/Me';
+import Me from './page/Me';
+import MyLocation from './page/map';
 import Carema from '@components/Carema';
 import {HEADERDATA} from './mock';
 import {useTheme} from '@hooks/use-theme';
@@ -17,6 +18,9 @@ import {Actions} from 'react-native-router-flux';
 const renderSceneData: {[key: string]: React.ComponentType<{}>} = {};
 HEADERDATA.forEach(item => {
   renderSceneData[item.key] = Me;
+  if (item.key === 'us') {
+    renderSceneData[item.key] = MyLocation;
+  }
 });
 const renderScene = SceneMap(renderSceneData);
 

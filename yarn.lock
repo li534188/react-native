@@ -6323,6 +6323,11 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.npm.taobao.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha1-TxonOv38jzSIqMUWv9p4+HI1I2I=
 
+react-native-amap3d@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.npm.taobao.org/react-native-amap3d/download/react-native-amap3d-2.0.4.tgz#36eb616bbbedceb999f06b6665d51d99c21d9654"
+  integrity sha1-Nutha7vtzrmZ8GtmZdUdmcIdllQ=
+
 react-native-camera@^4.2.1:
   version "4.2.1"
   resolved "https://registry.nlark.com/react-native-camera/download/react-native-camera-4.2.1.tgz#caf74081f055e89d7e9b0cd5108965d808c60e90"

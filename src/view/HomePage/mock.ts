@@ -1,4 +1,4 @@
-import {ListItem} from './components/Me';
+import {ListItem} from './page/Me';
 
 export const DATA: ListItem[] = [
   {
