@@ -180,6 +180,12 @@ android {
         }
     }
 
+    repositories {
+        flatDir {
+            dirs 'libs','./libs' // 路径方式
+        }
+    }
+
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
@@ -203,6 +209,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation  (name: 'alipaysdk-15.8.05.211018174351', ext: 'aar')
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'

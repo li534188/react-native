@@ -10,16 +10,24 @@ import {
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import Me from './page/Me';
 import MyLocation from './page/map';
+import WebViewWrapper from './page/webView';
 import Carema from '@components/Carema';
 import {HEADERDATA} from './mock';
 import {useTheme} from '@hooks/use-theme';
 import {Actions} from 'react-native-router-flux';
+import Pay from './page/pay';
 
 const renderSceneData: {[key: string]: React.ComponentType<{}>} = {};
 HEADERDATA.forEach(item => {
   renderSceneData[item.key] = Me;
   if (item.key === 'us') {
     renderSceneData[item.key] = MyLocation;
+  }
+  if (item.key === 'us1') {
+    renderSceneData[item.key] = WebViewWrapper;
+  }
+  if (item.key === 'us2') {
+    renderSceneData[item.key] = Pay;
   }
 });
 const renderScene = SceneMap(renderSceneData);
